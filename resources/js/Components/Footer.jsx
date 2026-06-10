@@ -12,7 +12,7 @@ export default function Footer() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                             </div>
-                            <span className="text-xl font-bold text-white">ResumeExpert</span>
+                            <span className="text-xl font-bold text-white">CVPilot</span>
                         </Link>
                         <p className="text-sm text-gray-400">
                             AI-powered resume analysis to help you land your dream job.
@@ -40,16 +40,15 @@ export default function Footer() {
                     <div>
                         <h3 className="text-sm font-semibold text-white mb-4">Legal</h3>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
+                            <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link></li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="border-t border-slate-800 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
                     <p className="text-sm text-gray-500">
-                        &copy; {new Date().getFullYear()} ResumeExpert. All rights reserved.
+                        &copy; {new Date().getFullYear()} CVPilot. All rights reserved.
                     </p>
                     <div className="flex space-x-4 mt-4 md:mt-0">
                         <a href="#" className="text-gray-400 hover:text-white transition-colors">

@@ -44,7 +44,7 @@ export default function Login({ status, canResetPassword }) {
                                     </svg>
                                 </div>
                                 <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
-                                <p className="text-gray-500 text-sm mt-1.5">Sign in to your ResumeExpert account</p>
+                                <p className="text-gray-500 text-sm mt-1.5">Sign in to your CVPilot account</p>
                             </div>
 
                             {status && (

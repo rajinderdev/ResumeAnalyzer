@@ -255,7 +255,7 @@ function FeaturesSection() {
                 <ScrollReveal animation="fade-in-up">
                     <div className="text-center mb-16">
                         <span className="text-teal-600 text-sm font-semibold uppercase tracking-wider">Features</span>
-                        <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">Why ResumeExpert AI?</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">Why CVPilot AI?</h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Industry-grade AI-powered insights to give you the competitive edge in the job market.
                         </p>
@@ -383,7 +383,7 @@ function StepsSection() {
 function TestimonialsSection() {
     const testimonials = [
         {
-            text: "ResumeExpert was a game changer. I applied to over 50 positions before using it, and within 2 weeks of implementing their suggestions, I got 5 interviews.",
+            text: "CVPilot was a game changer. I applied to over 50 positions before using it, and within 2 weeks of implementing their suggestions, I got 5 interviews.",
             name: 'David Chen',
             role: 'Software Engineer',
             company: 'Previously @ Startup',
@@ -416,7 +416,7 @@ function TestimonialsSection() {
                     <div className="text-center mb-14">
                         <span className="text-teal-300 text-sm font-semibold uppercase tracking-wider">Testimonials</span>
                         <h2 className="text-3xl font-bold text-white mt-2 mb-3">Success Stories</h2>
-                        <p className="text-teal-200">Thousands of job seekers have transformed their job search with ResumeExpert.</p>
+                        <p className="text-teal-200">Thousands of job seekers have transformed their job search with CVPilot.</p>
                     </div>
                 </ScrollReveal>
                 <div className="grid md:grid-cols-3 gap-6">

@@ -3,18 +3,38 @@ import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ children }) {
-    const user = usePage().props.auth.user;
+    const { auth, impersonating } = usePage().props;
+    const user = auth.user;
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const navLinks = [
         { label: 'Dashboard', href: route('dashboard'), active: route().current('dashboard') },
-        { label: 'Analyze', href: route('dashboard'), active: false },
-        { label: 'History', href: route('dashboard'), active: false },
+        { label: 'Build', href: route('resume-builder.index'), active: route().current('resume-builder.*') },
+        { label: 'Chat Support', href: route('chat.index'), active: route().current('chat.*') },
         { label: 'Settings', href: route('profile.edit'), active: route().current('profile.edit') },
     ];
 
     return (
         <div className="min-h-screen bg-gray-50">
+            {/* Impersonation Banner */}
+            {impersonating && (
+                <div className="bg-amber-500 text-white px-4 py-2 text-center text-sm font-medium flex items-center justify-center gap-3 z-[60] relative">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    You are being viewed as <strong className="mx-1">{user.name}</strong> by an admin
+                    <Link
+                        href={route('impersonate.stop')}
+                        method="post"
+                        as="button"
+                        className="ml-2 bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-xs font-semibold transition-colors"
+                    >
+                        Stop Impersonating
+                    </Link>
+                </div>
+            )}
+
             <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
@@ -25,7 +45,7 @@ export default function AuthenticatedLayout({ children }) {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
-                                <span className="text-xl font-bold text-gray-900">ResumeExpert</span>
+                                <span className="text-xl font-bold text-gray-900">CVPilot</span>
                             </Link>
 
                             <div className="hidden md:flex items-center ml-10 space-x-1">
@@ -46,6 +66,14 @@ export default function AuthenticatedLayout({ children }) {
                         </div>
 
                         <div className="hidden md:flex items-center space-x-4">
+                            {user.is_admin && (
+                                <Link
+                                    href={route('admin.dashboard')}
+                                    className="px-3 py-1.5 text-xs font-medium text-purple-700 bg-purple-50 rounded-full hover:bg-purple-100 transition-colors"
+                                >
+                                    Admin Panel
+                                </Link>
+                            )}
                             <div className="relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -61,6 +89,9 @@ export default function AuthenticatedLayout({ children }) {
                                     </Dropdown.Trigger>
                                     <Dropdown.Content>
                                         <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                        {user.is_admin && (
+                                            <Dropdown.Link href={route('admin.dashboard')}>Admin Panel</Dropdown.Link>
+                                        )}
                                         <Dropdown.Link href={route('logout')} method="post" as="button">Log Out</Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
